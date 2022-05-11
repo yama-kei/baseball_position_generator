@@ -3,18 +3,22 @@
 <div class="recipe">
   <form action="generate" id="position_data" method="post">
   <div class="recipe__info">
-    <h2 class="recipe__title">Need help assigning positions?</h2>
-    <p>Add, remove, sort position according to the priority, and then list players. Once you submit, this tool will generate the randomized positions for specified number of innings.
+    <h2 class="recipe__title">Need help assigning positions for players?</h2>
+    <p>Add, remove, sort position, and ]list players. Once you sumit, this tool will generate the randomized positions for specified number of innings.
     </p>
     <p>
       <input type="text" class="recipe__text-field" name="team" value="{{ team }}" placeholder="Team Name">
     </p>
     <p>
     <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" name="randomize">
-      <label class="form-check-label" for="defaultCheck1">
-        Preserve position for first inning
-      </label>
+      <input class="form-check-input" type="checkbox" id="norandomize" name="norandomize">
+      <label class="form-check-label">Preserve position for first inning</label>
+    </div>
+    </p>
+    <p>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="keeporder" name="keeporder">
+      <label class="form-check-label">Preserve batting order</label>
     </div>
     </p>
     <p>
@@ -48,6 +52,7 @@
   </div>
 	</form>
 </div>
+
 <script id="rowTemplate" type="text/template">
     <tr>
         <td class="drag-handler"></td>
