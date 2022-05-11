@@ -2,15 +2,12 @@
 {% import "positiondump.html" as dumper %}
 {% block content %}
 
-<div class="jumbotron">
+<h2>{{ team }}</h2>
 
-<h1>{{ team }}</h1>
-
-<h2>Positions</h2>
+<h3>Positions</h3>
 {{ dumper.dump_position(innings, positions_details) }}
 
-<h2>Batting Order</h2>
+<h3>Batting Order</h3>
 {{ dumper.dump_batting(order) }}
 
-</div>
 {% endblock %}

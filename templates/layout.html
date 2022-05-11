@@ -17,15 +17,14 @@
     <script src="/static/js/draganddrop.js"></script>
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <div class="container">
 <h1><a href="/">Baseball Position Generator</a> <small>preview</small></h1>
-{% if msg %}
-<p class="bg-warning">{{ msg }}</p>
-{% endif %}
 {% block content %}{% endblock %}
 </div>
-<div class="container">
-<span class="small"><p>Baseball Position Generator: Copyright 2022 Nekomatayama Studio.</p></span>
-</div>
-</body></html>
+</body>
+
+<footer class="mt-auto text-center text-lg-start bg-light text-muted">
+    © 2022 Copyright Nekomatayama Studio.</p></span>
+</footer>
+</html>
