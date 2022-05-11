@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="recipe">
+  <form action="generate" id="position_data" method="post">
+  <div class="recipe__info">
+    <h2 class="recipe__title">Want to assign position? Here is your tool!</h2>
+    <p>Add, remove, sort position according to the priority, and then assign players to each position. Once you submit, we will generate the randomized positions for specified number of innings.
+    </p>
+    <p>
+      <input type="text" class="recipe__text-field" name="team" value="{{ team }}" placeholder="Team Name">
+    </p>
+    <p>
+    <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" name="randomize">
+      <label class="form-check-label" for="defaultCheck1">
+        Randomize first inning
+      </label>
+    </div>
+    </p>
+    <p>
+    <label for="customRange">Number of innings</label>
+    <input type="number" id="innings" name="innings" min="3" max="9" value="5">
+    </p>
+    <button type="submit" class="btn btn-primary btn-lg">Generate!</button>
+  </div>
+  <div class="recipe__ingredients">
+    <table cellpadding="0" cellspacing="0" border="0" class="recipe-table" id="recipeTable">
+      <tbody id="recipeTableBody">
+      {%for position, player in position_details.items()%}
+        <tr>
+          <td class="drag-handler"></td>
+          <td class="recipe-table__cell">
+            <input type="text" class="recipe__text-field" name="positions" value="{{ position }}" placeholder="Position">
+          </td>
+          <td class="recipe-table__cell">
+            <input type="text" class="recipe__text-field" name="players" value = "{{ player }}" placeholder="Player">
+          </td>
+          <td class="recipe-table__cell">
+            <button class="recipe-table__del-row-btn">x</button>
+          </td>
+        </tr>
+      {%endfor%}
+      </tbody>
+    </table>
+    <div class="recipe-table__add-row">
+      <span class="recipe-table__add-row-btn">+</span>
+    </div>
+  </div>
+	</form>
+</div>
+<script id="rowTemplate" type="text/template">
+    <tr>
+        <td class="drag-handler"></td>
+        <td class="recipe-table__cell">
+            <input type="text" class="recipe__text-field" name="positions" value="" placeholder="Position">
+        </td>
+        <td class="recipe-table__cell">
+            <input type="text" class="recipe__text-field" name="players" value="" placeholder="Player">
+        </td>
+        <td class="recipe-table__cell">
+            <button class="recipe-table__del-row-btn">x</button>
+        </td>
+    </tr>
+</script>
+{% endblock %}

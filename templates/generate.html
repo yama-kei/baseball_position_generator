@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% import "positiondump.html" as dumper %}
+{% block content %}
+
+<div class="jumbotron">
+
+<h1>{{ team }}</h1>
+
+<h2>Positions</h2>
+{{ dumper.dump_position(innings, positions_details) }}
+
+<h2>Batting Order</h2>
+{{ dumper.dump_batting(order) }}
+
+</div>
+{% endblock %}

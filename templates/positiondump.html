@@ -1,0 +1,26 @@
+{% macro dump_position(innings, positions_details) -%}
+<table class="table table-striped table-hover"><tbody>
+    <tr>
+      {% for n in range(innings+1) %}
+      <td>{{ n if n != 0 else ''}}</td>
+      {% endfor %}
+    </tr>
+    {% for positions in positions_details %}
+    <tr>
+      {% for pos in positions %}
+      <td>{{ pos }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+</tbody></table>
+{%- endmacro %}
+
+{% macro dump_batting(order) -%}
+<table class="table table-striped table-hover"><tbody>
+    <tr>
+    {% for player in order %}
+      <td>{{ player }}</td>
+    {% endfor %}
+    </tr>
+</tbody></table>
+{%- endmacro %}
