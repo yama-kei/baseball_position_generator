@@ -1,3 +1,4 @@
+import copy
 import random
 
 
@@ -10,7 +11,7 @@ def generate_positions(positions, players, innings, norandomize, keeporder):
     players = dedupe_and_remove_empty(players)
     positions = dedupe_and_remove_empty(positions)
     fieldingpos = {pos:[] for pos in positions}
-    fielding = players
+    fielding = copy.deepcopy(players)
     available = positions[:len(fielding)]
     if norandomize:
         for c, pos in enumerate(available):
