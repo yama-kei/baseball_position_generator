@@ -24,10 +24,7 @@ def mainpage():
     players = request.args.get('players', '').split(',')
     position_details = {}
     for i, pos in enumerate(positions):
-        print(i)
-        print(pos)
         position_details[pos] = players[i]
-    print(position_details)
     if len(position_details) == 0:
         position_details = default_positions
     return render_template('index.html',
