@@ -1,5 +1,6 @@
 import copy
 import random
+from datetime import datetime
 
 
 def dedupe_and_remove_empty(listobj):
@@ -13,6 +14,7 @@ def generate_positions(positions, players, innings, norandomize, keeporder):
     fieldingpos = {pos:[] for pos in positions}
     fielding = copy.deepcopy(players)
     available = positions[:len(fielding)]
+    random.seed(datetime.now().timestamp())
     if norandomize:
         for c, pos in enumerate(available):
             fieldingpos[pos].append(fielding[c])

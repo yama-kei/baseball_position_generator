@@ -5,13 +5,13 @@ from positiongen import generate_positions
 
 app = Flask(__name__)
 
-positions = {
+default_positions = {
     'First Base':'',
     'Second Base':'',
     'Third Base':'',
     'Pitcher':'',
     'Short Stop':'',
-    'Cather':'',
+    'Catcher':'',
     'Right Field':'',
     'Left Field':'',
     'Center Field':''
@@ -19,9 +19,20 @@ positions = {
 
 @app.route('/')
 def mainpage():
+    teamname = request.args.get('teamname', '')
+    positions = request.args.get('positions', '').split(',')
+    players = request.args.get('players', '').split(',')
+    position_details = {}
+    for i, pos in enumerate(positions):
+        print(i)
+        print(pos)
+        position_details[pos] = players[i]
+    print(position_details)
+    if len(position_details) == 0:
+        position_details = default_positions
     return render_template('index.html',
-    position_details=positions,
-    team='')
+    position_details=position_details,
+    team=teamname)
 
 @app.route('/generate', methods=['POST'])
 def generate():
