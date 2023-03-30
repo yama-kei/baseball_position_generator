@@ -95,7 +95,6 @@ body {
   color: #fff;
 }
 
-
 .drag-handler {
   width: 1.4em;
   position: relative;
@@ -105,6 +104,10 @@ body {
   cursor: move;
   border-top: 2px solid #FFF;
   border-bottom: 2px solid #FFF;
+}
+
+tr, td {
+   font-size: 16px;
 }
 
 .drag-handler:active {

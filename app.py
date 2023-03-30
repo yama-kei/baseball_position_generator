@@ -22,11 +22,9 @@ def mainpage():
     teamname = request.args.get('teamname', '')
     positions = request.args.get('positions', '').split(',')
     players = request.args.get('players', '').split(',')
-    position_details = {}
+    position_details = {} if request.args.get('positions') else default_positions
     for i, pos in enumerate(positions):
         position_details[pos] = players[i]
-    if len(position_details) == 0:
-        position_details = default_positions
     return render_template('index.html',
     position_details=position_details,
     team=teamname)
