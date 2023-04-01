@@ -3,6 +3,7 @@ from flask import request
 from flask import render_template
 from positiongen import generate_positions
 
+
 app = Flask(__name__)
 
 default_positions = {
@@ -40,4 +41,5 @@ def generate():
     (order, position_map) = generate_positions(
         positions, players, innings, norandomize, keeporder)
     position_data = [[p]+pl for p,pl in position_map.items()]
-    return render_template('generate.html', team=team, innings=innings, positions_details=position_data, order=order)
+    return render_template('generate.html',
+        team=team, innings=innings, positions_details=position_data, order=order)
