@@ -12,8 +12,8 @@ def dedupe_and_remove_empty(listobj):
 
 def generate_positions(positions, players, innings, norandomize, keeporder):
     """
-    This function returns tuple of players (batting order) and two-dimensional list
-    consisting of positions and corresponding players for all innings
+    This function returns tuple of players (batting order) and map (dictionary)
+    consisting of positions (key) and corresponding players for all innings (list)
     list of positions, players are given
     positions are kept for the first inning if norandomize option is set
     batting order is preserved if keeporder option is set
@@ -22,17 +22,20 @@ def generate_positions(positions, players, innings, norandomize, keeporder):
     players = dedupe_and_remove_empty(players)
     positions = dedupe_and_remove_empty(positions)
     fieldingpos = {pos:[] for pos in positions}
-    fielding = copy.deepcopy(players)
-    available = positions[:len(fielding)]
+    fielding_players = copy.deepcopy(players)
+    available_positions = positions[:len(fielding_players)]
+    # First inning with fixed positions
     if norandomize:
-        for c, pos in enumerate(available):
-            fieldingpos[pos].append(fielding[c])
+        for c, pos in enumerate(available_positions):
+            fieldingpos[pos].append(fielding_players[c])
         innings -= 1
-    random.shuffle(available)
+    random.shuffle(available_positions)
+    # Randomized positions
+    for i in range(innings):
+        for c, pos in enumerate(available_positions):
+            fieldingpos[pos].append(fielding_players[c])
+        fielding_players.append(fielding_players.pop(0))
+    # Randomize batting order
     if not keeporder:
         random.shuffle(players)
-    for i in range(innings):
-        for c, pos in enumerate(available):
-            fieldingpos[pos].append(fielding[c])
-        fielding.append(fielding.pop(0))
     return (players, fieldingpos)
