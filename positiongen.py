@@ -4,8 +4,6 @@ from datetime import datetime
 
 
 def dedupe_and_remove_empty(listobj):
-    """
-    """
     result = []
     [result.append(item) for item in listobj if item not in result and item != '']
     return result
@@ -30,6 +28,7 @@ def generate_positions(positions, players, innings, norandomize, keeporder):
             fieldingpos[pos].append(fielding_players[c])
         innings -= 1
     else:
+        # deep randomization
         random.shuffle(fielding_players)
     random.shuffle(available_positions)
     # Randomized positions
