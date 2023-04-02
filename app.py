@@ -27,8 +27,8 @@ def mainpage():
     for i, pos in enumerate(positions):
         position_details[pos] = players[i] if len(players) > i else ""
     return render_template('index.html',
-    position_details=position_details,
-    team=teamname)
+                           position_details=position_details,
+                           team=teamname)
 
 @app.route('/generate', methods=['POST'])
 def generate():
@@ -40,6 +40,10 @@ def generate():
     keeporder = True if request.form.get('keeporder') == 'on' else False
     (order, position_map) = generate_positions(
         positions, players, innings, norandomize, keeporder)
+    # Convert map (dict) to list of fielding positions
     position_data = [[p]+pl for p,pl in position_map.items()]
     return render_template('generate.html',
-        team=team, innings=innings, positions_details=position_data, order=order)
+                           team=team,
+                           innings=innings,
+                           positions_details=position_data,
+                           order=order)
