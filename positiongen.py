@@ -13,7 +13,7 @@ def dedupe_and_remove_empty(listobj):
 def generate_positions(positions, players, innings, norandomize, keeporder):
     """
     This function returns tuple of players (batting order) and map (dictionary)
-    consisting of positions (key) and corresponding players for all innings (list)
+    consisting of positions (key) and corresponding players for all innings (list as value)
     list of positions, players are given
     positions are kept for the first inning if norandomize option is set
     batting order is preserved if keeporder option is set
@@ -29,6 +29,8 @@ def generate_positions(positions, players, innings, norandomize, keeporder):
         for c, pos in enumerate(available_positions):
             fieldingpos[pos].append(fielding_players[c])
         innings -= 1
+    else:
+        random.shuffle(fielding_players)
     random.shuffle(available_positions)
     # Randomized positions
     for i in range(innings):
