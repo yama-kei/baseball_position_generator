@@ -22,16 +22,10 @@ def generate_positions(positions, players, innings, norandomize, keeporder):
     fieldingpos = {pos:[] for pos in positions}
     fielding_players = copy.deepcopy(players)
     available_positions = positions[:len(fielding_players)]
-    # First inning with fixed positions
-    if norandomize:
-        for c, pos in enumerate(available_positions):
-            fieldingpos[pos].append(fielding_players[c])
-        innings -= 1
-    else:
+    if not norandomize:
         # deep randomization
         random.shuffle(fielding_players)
-    random.shuffle(available_positions)
-    # Randomized positions
+        random.shuffle(available_positions)
     for i in range(innings):
         for c, pos in enumerate(available_positions):
             fieldingpos[pos].append(fielding_players[c])
