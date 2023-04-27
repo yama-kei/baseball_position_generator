@@ -33,14 +33,15 @@ class TestGeneratePositions(unittest.TestCase):
         norandomize = False
         keeporder = False
         result = generate_positions(positions, players, innings, norandomize, keeporder)
+        (batting_order, position_map) = result
         
         # Check if empty elements have been removed from positions and players
-        self.assertEqual(len(positions), 8)
-        self.assertEqual(len(players), 6)
+        self.assertEqual(len(position_map.keys()), 8)
+        self.assertEqual(len(batting_order), 6)
         
         # Check if duplicate elements have been removed from positions and players
-        self.assertEqual(len(set(positions)), 8)
-        self.assertEqual(len(set(players)), 6)
+        self.assertEqual(len(set(position_map.keys())), 8)
+        self.assertEqual(len(set(batting_order)), 6)
         
         # Test Case 3: Check if positions are fixed in the first inning when norandomize option is set
         positions = ['P', 'C', '1B', '2B', '3B', 'SS', 'LF', 'CF', 'RF']
