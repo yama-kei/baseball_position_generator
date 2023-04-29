@@ -11,6 +11,12 @@
     "logo": "https://baseball-posgen-app.herokuapp.com/static/favicon.ico",
     "environments": {
       "test": {
+        "formation": {
+            "test": {
+              "quantity": 1,
+              "size": "basic"
+            }
+        },
         "scripts": {
           "test": "python -m unittest test_positiongen"
         }
