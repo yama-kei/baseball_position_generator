@@ -1,0 +1,19 @@
+{
+    "name": "Baseball Position Generator",
+    "description": "Webapp that generates different positions for each inning.",
+    "keywords": [
+      "baseball",
+      "Little League",
+      "position"
+    ],
+    "website": "https://baseball-posgen-app.herokuapp.com/",
+    "repository": "https://github.com/yama-kei/baseball_position_generator",
+    "logo": "https://baseball-posgen-app.herokuapp.com/static/favicon.ico",
+    "environments": {
+      "test": {
+        "scripts": {
+          "test": "python -m unittest test_positiongen"
+        }
+      }
+    }
+  }
