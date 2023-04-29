@@ -14,7 +14,7 @@
         "formation": {
             "test": {
               "quantity": 1,
-              "size": "basic"
+              "size": "standard-1X"
             }
         },
         "scripts": {
